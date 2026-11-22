@@ -1,0 +1,16 @@
+name: floci
+
+services:
+  floci:
+    image: floci/floci:latest
+    restart: unless-stopped
+    ports:
+      - "4566:4566"
+    volumes:
+      - floci_data:/app/data
+      - /var/run/docker.sock:/var/run/docker.sock   # ECS/RDS jaise container-backed services ke liye
+    environment:
+      FLOCI_DEFAULT_REGION: us-east-1
+
+volumes:
+  floci_data:
