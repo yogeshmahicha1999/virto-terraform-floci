@@ -12,9 +12,9 @@ Terraform code that builds the AWS architecture for Virto Commerce on the **Floc
 | data | RDS PostgreSQL, Secrets Manager, EFS |
 | compute | ECR, IAM roles, ALB, ECS on EC2 (ASG) |
 | frontend | S3 (private) + CloudFront |
-| monitoring | SNS + 5 CloudWatch alarms |
+| monitoring | SNS + CloudWatch alarms |
 
-## Structure
+## Project Structure
 
 ```
 floci/        Floci docker-compose + env.sh
@@ -24,6 +24,62 @@ terraform/
   modules/    network, data, compute, frontend, monitoring
 images/       screenshots
 ```
+
+## 📁 Files Structure
+
+```text
+virto-terraform-floci/
+├── floci/
+│   ├── docker-compose.yml
+│   └── env.sh
+├── images/
+│   ├── Floci.png
+│   ├── initialization.png
+│   ├── terraform.png
+│   └── validation.png
+├── README.md
+├── scripts/
+│   ├── floci-down.sh
+│   ├── floci-up.sh
+│   └── validate.sh
+└── terraform/
+    ├── envs/
+    │   ├── aws/
+    │   │   ├── main.tf
+    │   │   ├── outputs.tf
+    │   │   ├── providers.tf
+    │   │   └── variables.tf
+    │   └── floci/
+    │       ├── main.tf
+    │       ├── outputs.tf
+    │       └── providers.tf
+    └── modules/
+        ├── compute/
+        │   ├── alb.tf
+        │   ├── asg.tf
+        │   ├── ecr.tf
+        │   ├── ecs.tf
+        │   ├── iam.tf
+        │   ├── outputs.tf
+        │   ├── task.tf
+        │   └── variables.tf
+        ├── data/
+        │   ├── main.tf
+        │   ├── outputs.tf
+        │   └── variables.tf
+        ├── frontend/
+        │   ├── cloudfront.tf
+        │   ├── outputs.tf
+        │   ├── s3.tf
+        │   └── variables.tf
+        ├── monitoring/
+        │   ├── main.tf
+        │   ├── outputs.tf
+        │   └── variables.tf
+        └── network/
+            ├── main.tf
+            ├── outputs.tf
+            └── variables.tf
 
 ## How to run
 
@@ -43,9 +99,16 @@ Prerequisites: Docker, Terraform, AWS CLI
 
 ## Screenshots
 
+#### Floci Page
 ![Floci](images/Floci.png)
+
+#### Initialization Page
 ![Initialization](images/initialization.png)
+
+#### Terraform Deploy Page
 ![Terraform](images/terraform.png)
+
+#### Terraform Validation Page
 ![Validation](images/validation.png)
 
 ## Limitations
