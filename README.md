@@ -115,5 +115,3 @@ Prerequisites: Docker, Terraform, AWS CLI
 
 - The Virto app does not run on the emulated ECS (`desired_count = 0`, no image in ECR).
 - CloudFront is created on Floci, but its domain does not serve traffic.
-- VPC destroy sometimes hangs on Floci; the script has a fallback reset.
-- CI/CD and the real AWS config (`envs/aws`) are not done yet.
